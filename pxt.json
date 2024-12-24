@@ -4,7 +4,8 @@
     "dependencies": {
         "core": "*",
         "radio": "*",
-        "microphone": "*"
+        "microphone": "*",
+        "smarttools": "github:51bit/smarttools#v0.3.4"
     },
     "files": [
         "main.blocks",

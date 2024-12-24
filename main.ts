@@ -8,13 +8,13 @@ function Play_Track() {
     l.setUint8(2, 0x00)
     l.setUint8(3, 0x02)
     l.setUint8(4, 0x00)
-    l.setUint8(5, 0x0A)
+    l.setUint8(5, Track_Num)
     l.setUint8(6, 0xEF)
     serial.writeBuffer(l)
 }
 
 serial.redirect(SerialPin.P0, SerialPin.P1, BaudRate.BaudRate9600)
-let Track_Num = 1
+let Track_Num = smarttools.stringToInt(smarttools.dec2Hex(10))
 basic.showIcon(IconNames.Yes)
 basic.forever(function on_forever() {
     
