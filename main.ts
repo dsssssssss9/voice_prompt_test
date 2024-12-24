@@ -14,6 +14,9 @@ input.onButtonPressed(Button.A, function () {
     basic.showString("" + (Track_Num))
     Play_Track()
 })
+input.onButtonPressed(Button.AB, function () {
+    Volume = smarttools.stringToInt(smarttools.dec2Hex(20))
+})
 function Play_Track () {
     let m = control.createBuffer(7)
 m.setUint8(0, 0x7E)
@@ -25,9 +28,10 @@ m.setUint8(5, Track_Num)
 m.setUint8(6, 0xEF)
 serial.writeBuffer(m)
 }
+let Volume = 0
 let Track_Num = 0
 Track_Num = 0
-let Volume = smarttools.stringToInt(smarttools.dec2Hex(20))
+Volume = smarttools.stringToInt(smarttools.dec2Hex(20))
 serial.redirect(
 SerialPin.P0,
 SerialPin.P1,
