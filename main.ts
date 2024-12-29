@@ -14,7 +14,7 @@ input.onButtonPressed(Button.A, function () {
     if (Track_Num > 10) {
         Track_Num = 1
     }
-    Track_Num = smarttools.stringToInt(smarttools.dec2Hex(randint(1, 10)))
+    Track_Num = smarttools.stringToInt(smarttools.dec2Hex(Track_Num))
     basic.showString("" + Track_Num)
     Play_Track()
 })
@@ -41,4 +41,4 @@ SerialPin.P1,
 BaudRate.BaudRate9600
 )
 Set_Volume()
-basic.showIcon(IconNames.Happy)
+basic.showIcon(IconNames.StickFigure)

@@ -11,6 +11,9 @@ def Set_Volume():
 
 def on_button_pressed_a():
     global Track_Num
+    Track_Num += 1
+    if Track_Num > 10:
+        Track_Num = 1
     Track_Num = smarttools.string_to_int(smarttools.dec2_hex(randint(1, 10)))
     basic.show_string("" + str(Track_Num))
     Play_Track()
@@ -36,4 +39,4 @@ Track_Num = 0
 Volume = smarttools.string_to_int(smarttools.dec2_hex(20))
 serial.redirect(SerialPin.P0, SerialPin.P1, BaudRate.BAUD_RATE9600)
 Set_Volume()
-basic.show_icon(IconNames.HAPPY)
+basic.show_icon(IconNames.STICK_FIGURE)
