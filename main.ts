@@ -25,6 +25,30 @@
  * ******************************************************************************
  * 
  * ALSO i had some excellent help from Bill Sievers so he deserves a mention as well!!
+ * 
+ * *****************************
+ * 
+ * // Speaker          MBit
+ * 
+ * // 
+ * 
+ * // 5V               3.3/5V
+ * 
+ * // 
+ * 
+ * // Gnd              GND
+ * 
+ * // 
+ * 
+ * // TX               P1 - 16
+ * 
+ * // 
+ * 
+ * // RX               p1 - 16
+ * 
+ * // 
+ * 
+ * // Ensure TX / RX pin numbers are correct in ONSTART Block
  */
 // i should like to point out that the original code on which my translation is based was written by Thomas Burzy - https://github.com/FireMarshmellow
 // 
