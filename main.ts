@@ -1,15 +1,25 @@
 /**
- * Speaker          MBit
+ * // Speaker          MBit
  * 
- * 5V               3.3/5V
+ * // 
  * 
- * Gnd              GND
+ * // 5V               3.3/5V
  * 
- * TX               P1 - 16
+ * // 
  * 
- * RX               p1 - 16
+ * // Gnd              GND
  * 
- * Ensure TX / RX pin numbers are correct in ONSTART Block
+ * // 
+ * 
+ * // TX               P1 - 16
+ * 
+ * // 
+ * 
+ * // RX               p1 - 16
+ * 
+ * // 
+ * 
+ * // Ensure TX / RX pin numbers are correct in ONSTART Block
  */
 function Set_Volume () {
     let l = control.createBuffer(7)
@@ -24,37 +34,92 @@ serial.writeBuffer(l)
 }
 input.onButtonPressed(Button.A, function () {
     Track_Num += 1
-    if (Track_Num > 3) {
+    if (Track_Num > 6) {
         Track_Num = 1
     }
     Track_Num = smarttools.stringToInt(smarttools.dec2Hex(Track_Num))
     basic.showString("" + (Track_Num))
     Play_Track()
 })
-// Speaker          Mbit
-// 
-// 5V               3.3/5v
-// 
-// GND              GND
-// 
-// TX               RX     P1 - 15
-// 
-// RX               TX     P1 - 15
-// 
-// Ensure TX / RX Pins correct in the ONSTART Block
+function Pause_Play () {
+    let q = control.createBuffer(7)
+q.setUint8(0, 0x7E)
+q.setUint8(1, 0x0E)
+q.setUint8(2, 0x00)
+q.setUint8(3, 0x02)
+q.setUint8(4, 0x00)
+q.setUint8(5, 0x00)
+q.setUint8(6, 0xEF)
+serial.writeBuffer(q)
+}
+function Stop_Play () {
+    let n = control.createBuffer(7)
+n.setUint8(0, 0x7E)
+n.setUint8(1, 0x16)
+n.setUint8(2, 0x00)
+n.setUint8(3, 0x02)
+n.setUint8(4, 0x00)
+n.setUint8(5, 0x00)
+n.setUint8(6, 0xEF)
+serial.writeBuffer(n)
+}
+function Next_Track () {
+    let m = control.createBuffer(7)
+m.setUint8(0, 0x7E)
+m.setUint8(1, 0x01)
+m.setUint8(2, 0x00)
+m.setUint8(3, 0x02)
+m.setUint8(4, 0x00)
+m.setUint8(5, 0x00)
+m.setUint8(6, 0xEF)
+serial.writeBuffer(m)
+}
 input.onButtonPressed(Button.AB, function () {
     Volume = smarttools.stringToInt(smarttools.dec2Hex(5))
 })
 function Play_Track () {
-    let m = control.createBuffer(7)
-m.setUint8(0, 0x7E)
-m.setUint8(1, 0x03)
-m.setUint8(2, 0x00)
-m.setUint8(3, 0x02)
-m.setUint8(4, 0x00)
-m.setUint8(5, Track_Num)
-m.setUint8(6, 0xEF)
-serial.writeBuffer(m)
+    let o = control.createBuffer(7)
+o.setUint8(0, 0x7E)
+o.setUint8(1, 0x03)
+o.setUint8(2, 0x00)
+o.setUint8(3, 0x02)
+o.setUint8(4, 0x00)
+o.setUint8(5, Track_Num)
+o.setUint8(6, 0xEF)
+serial.writeBuffer(o)
+}
+function Random_Play () {
+    let p = control.createBuffer(7)
+p.setUint8(0, 0x7E)
+p.setUint8(1, 0x18)
+p.setUint8(2, 0x00)
+p.setUint8(3, 0x02)
+p.setUint8(4, 0x00)
+p.setUint8(5, 0x00)
+p.setUint8(6, 0xEF)
+serial.writeBuffer(p)
+}
+function Resume_Play () {
+    let r = control.createBuffer(7)
+r.setUint8(0, 0x7E)
+r.setUint8(1, 0x0D)
+r.setUint8(2, 0x00)
+r.setUint8(3, 0x02)
+r.setUint8(4, 0x00)
+r.setUint8(5, 0x00)
+r.setUint8(6, 0xEF)
+serial.writeBuffer(r)
+}
+function Previous_Track () {
+    let s = control.createBuffer(7)
+s.setUint8(0, 0x7E)
+s.setUint8(1, 0x02)
+s.setUint8(2, 0x00)
+s.setUint8(3, 0x02)
+s.setUint8(4, 0x00)
+s.setUint8(5, 0x00)
+s.setUint8(6, 0xEF)
+serial.writeBuffer(s)
 }
 let Volume = 0
 let Track_Num = 0
