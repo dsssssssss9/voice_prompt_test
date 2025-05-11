@@ -1,26 +1,24 @@
-/**
- * // Speaker          MBit
- * 
- * // 
- * 
- * // 5V               3.3/5V
- * 
- * // 
- * 
- * // Gnd              GND
- * 
- * // 
- * 
- * // TX               P1 - 16
- * 
- * // 
- * 
- * // RX               p1 - 16
- * 
- * // 
- * 
- * // Ensure TX / RX pin numbers are correct in ONSTART Block
- */
+// // Speaker          MBit
+// 
+// //
+// 
+// // 5V               3.3/5V
+// 
+// //
+// 
+// // Gnd              GND
+// 
+// //
+// 
+// // TX               P1 - 16
+// 
+// //
+// 
+// // RX               p1 - 16
+// 
+// //
+// 
+// // Ensure TX / RX pin numbers are correct in ONSTART Block
 function Set_Volume () {
     let l = control.createBuffer(7)
 l.setUint8(0, 0x7E)
@@ -34,7 +32,7 @@ serial.writeBuffer(l)
 }
 input.onButtonPressed(Button.A, function () {
     Track_Num += 1
-    if (Track_Num > 6) {
+    if (Track_Num > Number_Of_Tracks) {
         Track_Num = 1
     }
     Track_Num = smarttools.stringToInt(smarttools.dec2Hex(Track_Num))
@@ -76,6 +74,9 @@ serial.writeBuffer(m)
 }
 input.onButtonPressed(Button.AB, function () {
     Volume = smarttools.stringToInt(smarttools.dec2Hex(5))
+})
+input.onButtonPressed(Button.B, function () {
+    Stop_Play()
 })
 function Play_Track () {
     let o = control.createBuffer(7)
@@ -122,10 +123,10 @@ s.setUint8(6, 0xEF)
 serial.writeBuffer(s)
 }
 let Volume = 0
-let Track_Num = 0
-// Make sure to set this to the maximum track number stored on the device you wish to use
-// 
 let Number_Of_Tracks = 0
+// Make sure to set this to the maximum track number stored on the device you wish to use
+Number_Of_Tracks = 0
+let Track_Num = 0
 Track_Num = 0
 basic.showIcon(IconNames.No)
 Volume = smarttools.stringToInt(smarttools.dec2Hex(10))
