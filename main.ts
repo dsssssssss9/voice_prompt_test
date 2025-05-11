@@ -1,24 +1,39 @@
-// // Speaker          MBit
-// 
-// //
-// 
-// // 5V               3.3/5V
-// 
-// //
-// 
-// // Gnd              GND
-// 
-// //
-// 
-// // TX               P1 - 16
-// 
-// //
-// 
-// // RX               p1 - 16
-// 
-// //
-// 
-// // Ensure TX / RX pin numbers are correct in ONSTART Block
+/**
+ * Speaker          MBit
+ * 
+ * ----------------------------- 
+ * 
+ *  5V               3.3/5V
+ * 
+ *  
+ * 
+ *  Gnd              GND
+ * 
+ *  
+ * 
+ *  TX               P1 - 16
+ * 
+ *  
+ * 
+ *  RX               p1 - 16
+ * 
+ *  
+ * 
+ *  Ensure TX / RX pin numbers are correct in ONSTART Block
+ * 
+ * Also make sure to set Number_Of_Tracks variable in ONSTART block to correct value
+ */
+/**
+ * i should like to point out that the original code on which my translation is based was written by Thomas Burzy - https://github.com/FireMarshmellow
+ * 
+ * He did all the haed work in translationg the not so easy to understand DFRobot manual to somethng much more readable - so he deserves the vast majority of the credit!!
+ * 
+ * He has a very good Youtube channel as well - https://www.youtube.com/mellow_labs
+ * 
+ * ******************************************************************************
+ * 
+ * ALSO i had some excellent help from Bill Sievers so he deserves a mention as well!!
+ */
 function Set_Volume () {
     let l = control.createBuffer(7)
 l.setUint8(0, 0x7E)
@@ -75,9 +90,6 @@ serial.writeBuffer(m)
 input.onButtonPressed(Button.AB, function () {
     Volume = smarttools.stringToInt(smarttools.dec2Hex(5))
 })
-input.onButtonPressed(Button.B, function () {
-    Stop_Play()
-})
 function Play_Track () {
     let o = control.createBuffer(7)
 o.setUint8(0, 0x7E)
@@ -89,6 +101,9 @@ o.setUint8(5, Track_Num)
 o.setUint8(6, 0xEF)
 serial.writeBuffer(o)
 }
+input.onButtonPressed(Button.B, function () {
+    Stop_Play()
+})
 function Random_Play () {
     let p = control.createBuffer(7)
 p.setUint8(0, 0x7E)
@@ -124,9 +139,9 @@ serial.writeBuffer(s)
 }
 let Volume = 0
 let Number_Of_Tracks = 0
+let Track_Num = 0
 // Make sure to set this to the maximum track number stored on the device you wish to use
 Number_Of_Tracks = 0
-let Track_Num = 0
 Track_Num = 0
 basic.showIcon(IconNames.No)
 Volume = smarttools.stringToInt(smarttools.dec2Hex(10))
