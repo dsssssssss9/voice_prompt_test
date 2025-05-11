@@ -123,6 +123,10 @@ serial.writeBuffer(s)
 }
 let Volume = 0
 let Track_Num = 0
+// Make sure to set this to the maximum track number stored on the device you wish to use
+// 
+let Number_Of_Tracks = 0
+Track_Num = 0
 basic.showIcon(IconNames.No)
 Volume = smarttools.stringToInt(smarttools.dec2Hex(10))
 serial.redirect(
