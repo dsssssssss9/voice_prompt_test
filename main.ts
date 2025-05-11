@@ -1,73 +1,31 @@
 /**
  * i should like to point out that the original code on which my translation is based was written by Thomas Burzy - https: github.com/FireMarshmellow
  * 
- *   
+ * He did all the hard work in translating the not so easy to understand DFRobot manual to something much more readable - so he deserves the vast majority of the credit!!
  * 
- *    
+ * He has a very good Youtube channel as well - https: www.youtube.com/mellow_labs
  * 
- *   
+ * ******************************************************************************
  * 
- *     He did all the haed work in translationg the not so easy to understand DFRobot manual to somethng much more readable - so he deserves the vast majority of the credit!!
+ * ALSO i had some excellent help from Bill Sievers so he deserves a mention as well!!
  * 
- *   
+ * *************************************************
  * 
- *    
+ * Speaker          MBit
  * 
- *   
+ * -----------------------------
  * 
- *     He has a very good Youtube channel as well - https: www.youtube.com/mellow_labs
+ * 5V               3.3/5V
  * 
- *   
+ * Gnd              GND
  * 
- *    
+ * TX               P1 - 16
  * 
- *   
+ * RX               p1 - 16
  * 
- *     ******************************************************************************
+ * Ensure TX / RX pin numbers are correct in ONSTART Block
  * 
- *   
- * 
- *    
- * 
- *   
- * 
- *     ALSO i had some excellent help from Bill Sievers so he deserves a mention as well!!
- * 
- *   
- * 
- *   *************************************************
- * 
- *   
- * 
- *   Speaker          MBit
- * 
- *   
- * 
- *   -----------------------------
- * 
- *   
- * 
- *   5V               3.3/5V
- * 
- *   
- * 
- *   Gnd              GND
- * 
- *   
- * 
- *   TX               P1 - 16
- * 
- *   
- * 
- *   RX               p1 - 16
- * 
- *   
- * 
- *   Ensure TX / RX pin numbers are correct in ONSTART Block
- * 
- *   
- * 
- *   Also make sure to set Number_Of_Tracks variable in ONSTART block to correct value
+ * Also make sure to set Number_Of_Tracks variable in ONSTART block to correct value
  */
 // i should like to point out that the original code on which my translation is based was written by Thomas Burzy - https://github.com/FireMarshmellow
 // 
@@ -233,8 +191,8 @@ s.setUint8(6, 0xEF)
 serial.writeBuffer(s)
 }
 let Number_Of_Tracks = 0
-let Track_Num = 0
 let Volume = 0
+let Track_Num = 0
 // Make sure to set this to the maximum track number stored on the device you wish to use
 Number_Of_Tracks = 10
 Track_Num = 0
